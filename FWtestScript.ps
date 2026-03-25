@@ -1,0 +1,14 @@
+Set-NetFirewallProfile -DefaultInboundAction Block -DefaultOutboundAction block
+Set-NetFirewallProfile -NotifyOnListen True
+Set-NetFirewallProfile -AllowUnicastResponseToMulticast
+
+Set-NetFirewallProfile -Profile Domain -LogFileName %SystemRoot%\System32\LogFiles\Firewall\pfirewall_Domain.log
+Set-NetFirewallProfile -Profile Private -LogFileName %SystemRoot%\System32\LogFiles\Firewall\pfirewall_Private.log
+Set-NetFirewallProfile -Profile Public -LogFileName %SystemRoot%\System32\LogFiles\Firewall\pfirewall_Public.log
+Set-NetFirewallProfile -LogAllowed True
+Set-NetFirewallProfile -LogBlocked True
+Set-NetFirewallProfile -LogIgnored True
+
+
+
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
