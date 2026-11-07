@@ -80,23 +80,23 @@ Set-Service winmgmt -StartupType Disabled
 #-Powershell
 Disable-PSRemoting -Force
 
-#Keep two ports open :3
-New-NetFirewallRule -DisplayName "Allow SMBtcp" -Direction Inbound -LocalPort 445 -Protocol TCP -Action Allow
-New-NetFirewallRule -DisplayName "Allow SMBtcp" -Direction Outbound -LocalPort 445 -Protocol TCP -Action Allow
+#Keep some ports open :3
 
 New-NetFirewallRule -DisplayName "Allow RDPtcp" -Direction Inbound -LocalPort 3389 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "Allow RDPudp" -Direction Inbound -LocalPort 3389 -Protocol UDP -Action Allow
 New-NetFirewallRule -DisplayName "Allow RDPtcp" -Direction Outbound -LocalPort 3389 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "Allow RDPudp" -Direction Outbound -LocalPort 3389 -Protocol UDP -Action Allow
 
-New-NetFirewallRule -DisplayName "Allow MSSQLtcp" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
-New-NetFirewallRule -DisplayName "Allow MSSQLtcp" -Direction Outbound -LocalPort 1433 -Protocol TCP -Action Allow
-
 #Ping
 New-NetFirewallRule -DisplayName "Allow ICMP Ping" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
 
 
 
+
+New-NetFirewallRule -DisplayName "Allow SMBtcp" -Direction Inbound -LocalPort 445 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "Allow SMBtcp" -Direction Outbound -LocalPort 445 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "Allow MSSQLtcp" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "Allow MSSQLtcp" -Direction Outbound -LocalPort 1433 -Protocol TCP -Action Allow
 <#
 New-NetFirewallRule -DisplayName "Allow HTTPtcp" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "Allow HTTPudp" -Direction Inbound -LocalPort 80 -Protocol UDP -Action Allow
